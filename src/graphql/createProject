@@ -1,0 +1,35 @@
+import gql from 'graphql-tag'
+
+export default gql`mutation createProject (
+	$name: String!
+	$projectType: String!
+	$projectStatus: String!
+	$units: Int!
+	$startDate: Date!
+	$endDate: Date!
+	$investors: [String]
+	$supervisors: [String]
+	$description: String
+    $files: [Upload] 
+	$pictures: [Upload]
+) {
+	createProject(
+		name: $name
+		projectType: $projectType
+		projectStatus: $projectStatus
+		units: $units
+		startDate: $startDate
+		endDate: $endDate
+		investors: $investors
+		supervisors: $supervisors
+		description: $description
+		files: $files
+		pictures:$pictures
+	) {
+		success
+		errors
+		project {
+			id
+		}
+	}
+}`
